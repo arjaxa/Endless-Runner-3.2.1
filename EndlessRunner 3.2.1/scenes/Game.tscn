@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/fgbg/ForeGround.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/fgbg/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/items/bone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Spawners/Spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/obstacles/barrel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/UI/ScoreUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/UI/gameOverUI.tscn" type="PackedScene" id=8]
+
+[node name="Game" type="Node2D"]
+position = Vector2( 5.16943, -5.16943 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="ForeGround" parent="." instance=ExtResource( 1 )]
+position = Vector2( 13.6038, 9.52258 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96.5865, 522.384 )
+
+[node name="Spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1283.07, 528.168 )
+scenes = [ ExtResource( 6 ), ExtResource( 4 ) ]
+
+[node name="ScoreUI" parent="." instance=ExtResource( 7 )]
+
+[node name="GameOverUI" parent="." instance=ExtResource( 8 )]
+visible = false

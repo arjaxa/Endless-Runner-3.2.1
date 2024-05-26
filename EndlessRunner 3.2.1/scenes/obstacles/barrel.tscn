@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/barrel.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Obstacles/barrel.png" type="Texture" id=2]
+[ext_resource path="res://scenes/effectors/effectDamage.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.5183, 19.2195 )
+
+[node name="barrel" type="Node2D"]
+script = ExtResource( 1 )
+scroll_speed = 4.7
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 8.98993, 0.739197 )
+scale = Vector2( -0.107379, 0.143951 )
+texture = ExtResource( 2 )
+
+[node name="effectDamage" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="effectDamage"]
+position = Vector2( 8.64575, 4.32288 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="body_entered" from="effectDamage" to="." method="_on_effectDamage_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
